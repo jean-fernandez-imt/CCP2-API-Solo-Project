@@ -1,6 +1,6 @@
 const root = {
   hello: () => {
-    return 'Hola Mundo!';
+    return "Hola Mundo!";
   },
 };
 
