@@ -1,2 +1,2 @@
 # CCP2-API-Solo-Project
-API implementation using GraphQL
+This was created during my time as a student at Code Chrysalis. It is intended to serve Starcraft II units' information.
