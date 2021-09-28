@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
+    "dev": "nodemon -r dotenv/config server/index.js",
     "start": "node -r dotenv/config server/index.js",
     "lint": "eslint --fix --ext .js .",
     "test": "npm run lint"
@@ -31,6 +32,7 @@
     "eslint-config-problems": "^5.0.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.2",
+    "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1"
   }
