@@ -1,2 +1,6 @@
 # Dependency directories
 node_modules/**
+husky/**
+
+# dotenv environment variables file
+.env

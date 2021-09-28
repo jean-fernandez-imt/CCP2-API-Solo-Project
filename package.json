@@ -4,7 +4,9 @@
   "description": "API implementation with GraphQL",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --fix --ext .js ."
+    "start": "node -r dotenv/config server/index.js",
+    "lint": "eslint --fix --ext .js .",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
@@ -22,6 +24,7 @@
   },
   "homepage": "https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.6.0"

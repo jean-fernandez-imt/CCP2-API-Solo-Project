@@ -16,8 +16,11 @@ const root = {
   },
 };
 
-const app = express();
-app.use(
+const server = express();
+
+const port = process.env.PORT || 4000;
+
+server.use(
   "/graphql",
   graphqlHTTP({
     schema,
@@ -25,5 +28,6 @@ app.use(
     graphiql: true,
   })
 );
-app.listen(4000);
-console.log("Running a GraphQL API server at http://localhost:4000/graphql");
+
+server.listen(port);
+console.log(`Running a GraphQL API server at http://localhost:${port}/graphql`);
