@@ -8,11 +8,6 @@
     "lint": "eslint --fix --ext .js .",
     "prepare": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project.git"
