@@ -4,14 +4,10 @@
   "description": "API implementation with GraphQL",
   "main": "index.js",
   "scripts": {
+    "prepare": "husky install",
     "start": "node -r dotenv/config server/index.js",
     "lint": "eslint --fix --ext .js .",
     "test": "npm run lint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "repository": {
     "type": "git",
