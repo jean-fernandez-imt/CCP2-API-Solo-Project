@@ -6,7 +6,12 @@
   "scripts": {
     "start": "node -r dotenv/config server/index.js",
     "lint": "eslint --fix --ext .js .",
-    "prepare": "husky install"
+    "test": "npm run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "repository": {
     "type": "git",
