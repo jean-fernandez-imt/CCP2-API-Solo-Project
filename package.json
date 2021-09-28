@@ -4,7 +4,12 @@
   "description": "API implementation with GraphQL",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "lint": "eslint --fix --ext .js ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,19 @@
   "bugs": {
     "url": "https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project/issues"
   },
-  "homepage": "https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project#readme"
+  "homepage": "https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-problems": "^5.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1"
+  }
 }
