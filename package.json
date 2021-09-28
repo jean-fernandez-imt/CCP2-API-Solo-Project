@@ -1,0 +1,19 @@
+{
+  "name": "ccp2-api-solo-project",
+  "version": "1.0.0",
+  "description": "API implementation with GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project.git"
+  },
+  "author": "Jean Fernandez",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project/issues"
+  },
+  "homepage": "https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project#readme"
+}
