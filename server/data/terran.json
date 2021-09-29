@@ -1,0 +1,91 @@
+{
+  "terran": {
+    "structures": [],
+    "heroes": [{ "name": "Jim Raynor" }],
+    "units": [
+      {
+        "name": "SCV",
+        "role": "Basic Worker",
+        "armament": {
+          "name": "Fusion cutter",
+          "damage": 5,
+          "targets": ["Ground"],
+          "cooldown": 1.07,
+          "range": 0.1
+        },
+        "properties": {
+          "transportCapacity": 1,
+          "sight": 8
+        },
+        "production": {
+          "minerals": 50,
+          "army": 1,
+          "buildTime": 12,
+          "producedFrom": [
+            "Command Center",
+            "Orbital Command",
+            "Planetary Fortress"
+          ]
+        },
+        "movement": {
+          "speed": 3.94,
+          "acceleration": 2.5,
+          "lateralAcceleration": 46,
+          "deceleration": 0,
+          "collisionRadius": 0.375
+        },
+        "protection": {
+          "hitPoints": 45,
+          "armor": 0,
+          "type": ["Biological", "Mechanical"],
+          "armorType": "Light"
+        },
+        "meta": {
+          "targetPriority": 20,
+          "killScore": 100,
+          "productionScore": 50
+        }
+      },
+      {
+        "name": "Marine",
+        "role": "General-purpose Light Infantry",
+        "armament": {
+          "name": "C-14 Rifle",
+          "damage": 6,
+          "targets": ["Ground", "Air"],
+          "cooldown": 0.61,
+          "range": 5,
+          "upgrade": 1
+        },
+        "properties": {
+          "transportCapacity": 1,
+          "sight": 9
+        },
+        "production": {
+          "minerals": 50,
+          "army": 1,
+          "buildTime": 25,
+          "producedFrom": ["Barracks"]
+        },
+        "movement": {
+          "speed": 3.15,
+          "acceleration": 1000,
+          "lateralAcceleration": 46.0625,
+          "deceleration": 0,
+          "collisionRadius": 0.375
+        },
+        "protection": {
+          "hitPoints": 45,
+          "armor": 0,
+          "type": ["Biological", "Ground"],
+          "armorType": "Light"
+        },
+        "meta": {
+          "targetPriority": 20,
+          "killScore": 100,
+          "productionScore": 50
+        }
+      }
+    ]
+  }
+}

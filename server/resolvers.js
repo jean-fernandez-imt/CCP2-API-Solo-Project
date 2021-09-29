@@ -1,6 +1,10 @@
+const data = require("./data");
+
 const resolvers = {
   Query: {
-    hello: () => "Hello world!",
+    Test: () => {
+      return data.terran.units;
+    },
   },
 };
 

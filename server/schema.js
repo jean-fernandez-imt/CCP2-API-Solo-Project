@@ -2,7 +2,6 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Race {
-    name: String!
     Structures: [Structure]!
     Heroes: [Hero]!
     Units: [Unit]!
@@ -20,7 +19,7 @@ const typeDefs = gql`
     minerals: Int!
     army: Int!
     buildTime: Int!
-    upgradesFrom: Structure
+    upgradesFrom: String
     producedFrom: [Unit]
   }
 
@@ -33,7 +32,7 @@ const typeDefs = gql`
   }
 
   type StructureFunction {
-    upgradesTo: Structure
+    upgradesTo: String
     produces: [Unit]
     allows: [Structure]
     abilities: [String]
@@ -51,6 +50,7 @@ const typeDefs = gql`
     properties: UnitProperties!
     production: UnitProduction!
     movement: UnitMovement!
+    protection: UnitProtection!
     meta: UnitMeta!
   }
 
@@ -61,7 +61,7 @@ const typeDefs = gql`
     targets: [String]!
     cooldown: Float!
     range: Float!
-    upgrade: Int!
+    upgrade: Int
   }
 
   type UnitProperties {
@@ -74,9 +74,9 @@ const typeDefs = gql`
     gas: Int
     army: Int!
     buildTime: Int
-    producedFrom: Structure
-    evolvesFrom: Unit
-    requires: Structure
+    producedFrom: [String]
+    evolvesFrom: String
+    requires: String
   }
 
   type UnitMovement {
@@ -85,7 +85,7 @@ const typeDefs = gql`
     lateralAcceleration: Float!
     deceleration: Int!
     collisionRadius: Float!
-    creepMultiplier: Float!
+    creepMultiplier: Float
   }
 
   type UnitProtection {
@@ -105,7 +105,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    hello: String
+    Test: [Unit]
   }
 `;
 
