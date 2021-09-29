@@ -1,7 +1,7 @@
-const root = {
-  hello: () => {
-    return "Hola Mundo!";
+const resolvers = {
+  Query: {
+    hello: () => "Hello world!",
   },
 };
 
-module.exports = root;
+module.exports = resolvers;
