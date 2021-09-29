@@ -18,7 +18,7 @@ const typeDefs = gql`
 
   type StructureProduction {
     minerals: Int!
-    supply: Int!
+    army: Int!
     buildTime: Int!
     upgradesFrom: Structure
     producedFrom: [Unit]
@@ -37,14 +37,71 @@ const typeDefs = gql`
     produces: [Unit]
     allows: [Structure]
     abilities: [String]
+    research: [String]
   }
 
   type Hero {
-    name: String
+    name: String!
   }
 
   type Unit {
-    name: String
+    name: String!
+    role: String!
+    armament: UnitArmament!
+    properties: UnitProperties!
+    production: UnitProduction!
+    movement: UnitMovement!
+    meta: UnitMeta!
+  }
+
+  type UnitArmament {
+    name: String!
+    damage: Int!
+    attacks: Int
+    targets: [String]!
+    cooldown: Float!
+    range: Float!
+    upgrade: Int!
+  }
+
+  type UnitProperties {
+    transportCapacity: Int!
+    sight: Int!
+  }
+
+  type UnitProduction {
+    minerals: Int!
+    gas: Int
+    army: Int!
+    buildTime: Int
+    producedFrom: Structure
+    evolvesFrom: Unit
+    requires: Structure
+  }
+
+  type UnitMovement {
+    speed: Float!
+    acceleration: Int!
+    lateralAcceleration: Float!
+    deceleration: Int!
+    collisionRadius: Float!
+    creepMultiplier: Float!
+  }
+
+  type UnitProtection {
+    shields: Int
+    shieldRegenSec: Int
+    hitPoints: Int!
+    hitPointRegenSec: Float!
+    armor: Int!
+    type: [String]!
+    armorType: String
+  }
+
+  type UnitMeta {
+    targetPriority: Int!
+    killScore: Int!
+    productionScore: Int!
   }
 
   type Query {
