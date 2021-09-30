@@ -88,6 +88,9 @@
           "type": ["Biological", "Ground"],
           "armorType": "Light"
         },
+        "function": {
+          "evolvesTo": ["Zerg buildings"]
+        },
         "meta": {
           "targetPriority": 20,
           "killScore": 100,
@@ -130,6 +133,9 @@
           "armor": 0,
           "type": ["Biological", "Ground"],
           "armorType": "Light"
+        },
+        "function": {
+          "evolvesTo": ["Baneling"]
         },
         "meta": {
           "targetPriority": 20,

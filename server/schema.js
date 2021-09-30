@@ -2,25 +2,25 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Race {
-    name: String!
-    Structures: [Structure]!
-    Heroes: [Hero]!
-    Units: [Unit]!
+    name: String
+    structures: [Structure]
+    heroes: [Hero]
+    units: [Unit]
   }
 
   type Structure {
-    name: String!
+    name: String
     role: String
-    production: StructureProduction!
-    protection: StructureProtection!
-    function: StructureFunction!
+    production: StructureProduction
+    protection: StructureProtection
+    function: StructureFunction
   }
 
   type StructureProduction {
-    minerals: Int!
+    minerals: Int
     gas: Int
     army: Int
-    buildTime: Int!
+    buildTime: Int
     upgradesFrom: [String]
     producedFrom: [String]
     evolvesFrom: [String]
@@ -29,10 +29,10 @@ const typeDefs = gql`
 
   type StructureProtection {
     shields: Int
-    hitPoints: Int!
-    armor: Int!
-    type: [String]!
-    armorType: String!
+    hitPoints: Int
+    armor: Int
+    type: [String]
+    armorType: String
   }
 
   type StructureFunction {
@@ -50,35 +50,36 @@ const typeDefs = gql`
   }
 
   type Unit {
-    name: String!
-    role: String!
-    armament: UnitArmament!
-    properties: UnitProperties!
-    production: UnitProduction!
-    movement: UnitMovement!
-    protection: UnitProtection!
+    name: String
+    role: String
+    armament: UnitArmament
+    properties: UnitProperties
+    production: UnitProduction
+    movement: UnitMovement
+    protection: UnitProtection
+    function: UnitFunction
     meta: UnitMeta!
   }
 
   type UnitArmament {
-    name: String!
-    damage: Int!
+    name: String
+    damage: Int
     attacks: Int
-    targets: [String]!
-    cooldown: Float!
-    range: Float!
+    targets: [String]
+    cooldown: Float
+    range: Float
     upgrade: Int
   }
 
   type UnitProperties {
-    transportCapacity: Int!
-    sight: Int!
+    transportCapacity: Int
+    sight: Int
   }
 
   type UnitProduction {
-    minerals: Int!
+    minerals: Int
     gas: Int
-    army: Int!
+    army: Int
     buildTime: Int
     producedFrom: [String]
     evolvesFrom: [String]
@@ -86,33 +87,42 @@ const typeDefs = gql`
   }
 
   type UnitMovement {
-    speed: Float!
-    acceleration: Int!
-    lateralAcceleration: Float!
-    deceleration: Int!
-    collisionRadius: Float!
+    speed: Float
+    acceleration: Int
+    lateralAcceleration: Float
+    deceleration: Int
+    collisionRadius: Float
     creepMultiplier: Float
   }
 
   type UnitProtection {
     shields: Int
     shieldRegenSec: Int
-    hitPoints: Int!
+    hitPoints: Int
     hitPointRegenSec: Float
-    armor: Int!
-    type: [String]!
+    armor: Int
+    type: [String]
     armorType: String
   }
 
+  type UnitFunction {
+    evolvesTo: [String]
+  }
+
   type UnitMeta {
-    targetPriority: Int!
-    killScore: Int!
-    productionScore: Int!
+    targetPriority: Int
+    killScore: Int
+    productionScore: Int
   }
 
   type Query {
+    # Terran Queries
     Terran: Race
+
+    # Protoss Queries
     Protoss: Race
+
+    # Zerg Queries
     Zerg: Race
   }
 `;

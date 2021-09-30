@@ -1,5 +1,8 @@
-# Dependency directories
-node_modules/**
+# Editor configurations
+.vscode
 
-# dotenv environment variables file
+# Dependencies folder
+node_modules
+
+# Environment Variables
 .env

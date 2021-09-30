@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
+    "migrate": "npx prisma migrate dev --name init",
     "dev": "nodemon -r dotenv/config server/index.js",
     "start": "node -r dotenv/config server/index.js",
     "lint": "eslint --fix --ext .js ."
@@ -20,11 +21,13 @@
   },
   "homepage": "https://github.com/jean-fernandez-imt/CCP2-API-Solo-Project#readme",
   "dependencies": {
+    "@prisma/client": "^3.1.1",
     "apollo-server": "^3.3.0",
     "dotenv": "^10.0.0",
     "graphql": "^15.6.0"
   },
   "devDependencies": {
+    "@types/node": "^16.10.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-problems": "^5.0.0",
@@ -32,6 +35,9 @@
     "husky": "^7.0.2",
     "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
-    "pretty-quick": "^3.1.1"
+    "pretty-quick": "^3.1.1",
+    "prisma": "^3.1.1",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
   }
 }
