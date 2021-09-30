@@ -2,8 +2,16 @@ const data = require("./data");
 
 const resolvers = {
   Query: {
-    Test: () => {
-      return data.terran.units;
+    Terran: () => {
+      return data.terran;
+    },
+
+    Protoss: () => {
+      return data.protoss;
+    },
+
+    Zerg: () => {
+      return data.zerg;
     },
   },
 };

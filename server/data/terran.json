@@ -1,6 +1,57 @@
 {
   "terran": {
-    "structures": [],
+    "name": "Terran",
+    "structures": [
+      {
+        "name": "Command Center",
+        "role": "Foundation building",
+        "production": {
+          "minerals": 400,
+          "army": 11,
+          "buildTime": 71,
+          "producedFrom": ["SCV"]
+        },
+        "protection": {
+          "hitPoints": 1500,
+          "armor": 1,
+          "type": ["Mechanical", "Structure"],
+          "armorType": "Armored"
+        },
+        "function": {
+          "upgradesTo": ["Orbital Command", "Planetary Fortress"],
+          "produces": ["SCV"],
+          "allows": ["Engineering Bay", "Barracks", "Factory"]
+        }
+      },
+      {
+        "name": "Barracks",
+        "role": "Infantry production",
+        "production": {
+          "minerals": 150,
+          "buildTime": 46,
+          "producedFrom": ["SCV"]
+        },
+        "protection": {
+          "hitPoints": 1000,
+          "armor": 1,
+          "type": ["Mechanical", "Structure"],
+          "armorType": "Armored"
+        },
+        "function": {
+          "addOns": ["Tech Lab", "Reactor", "Tech Reactor"],
+          "produces": [
+            "Marine",
+            "Marauder",
+            "Reaper",
+            "Ghost",
+            "Medic",
+            "Firebat",
+            "Spectre"
+          ],
+          "allows": ["Orbital Command", "Bunker", "Ghost Academy", "Factory"]
+        }
+      }
+    ],
     "heroes": [{ "name": "Jim Raynor" }],
     "units": [
       {

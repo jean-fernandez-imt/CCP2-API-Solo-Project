@@ -1,7 +1,145 @@
 {
   "protoss": {
-    "structures": [],
+    "name": "Protoss",
+    "structures": [
+      {
+        "name": "Nexus",
+        "role": "Foundation building",
+        "production": {
+          "minerals": 400,
+          "army": 11,
+          "buildTime": 71,
+          "producedFrom": ["Probe"]
+        },
+        "protection": {
+          "shields": 1000,
+          "hitPoints": 1000,
+          "armor": 1,
+          "type": ["Structure"],
+          "armorType": "Armored"
+        },
+        "function": {
+          "produces": ["Probe", "Mothership"],
+          "allows": ["Gateway", "Forge"],
+          "abilities": ["Chrono Boost", "Mass Recall", "Battery Overcharge"]
+        }
+      },
+      {
+        "name": "Gateway",
+        "role": "Infantry warp-in",
+        "production": {
+          "minerals": 150,
+          "buildTime": 46,
+          "producedFrom": ["Probe"],
+          "requires": ["Nexus"]
+        },
+        "protection": {
+          "shields": 500,
+          "hitPoints": 500,
+          "armor": 1,
+          "type": ["Structure"],
+          "armorType": "Armored"
+        },
+        "function": {
+          "upgradesTo": ["Warp Gate"],
+          "produces": [
+            "Zealot",
+            "Stalker",
+            "Sentry",
+            "Adept",
+            "Dark Templar",
+            "High Templar"
+          ],
+          "allows": ["Cybernetics Core"]
+        }
+      }
+    ],
     "heroes": [{ "name": "Zeratul" }],
-    "units": []
+    "units": [
+      {
+        "name": "Probe",
+        "role": "Basic worker unit",
+        "armament": {
+          "name": "Particle Beam",
+          "damage": 5,
+          "targets": ["Ground"],
+          "cooldown": 1.07,
+          "range": 0.1
+        },
+        "properties": {
+          "transportCapacity": 1,
+          "sight": 8
+        },
+        "production": {
+          "minerals": 50,
+          "army": 1,
+          "buildTime": 12,
+          "producedFrom": ["Nexus"]
+        },
+        "movement": {
+          "speed": 3.94,
+          "acceleration": 2.5,
+          "lateralAcceleration": 46,
+          "deceleration": 0,
+          "collisionRadius": 0.375
+        },
+        "protection": {
+          "shields": 20,
+          "shieldRegenSec": 2,
+          "hitPoints": 20,
+          "armor": 0,
+          "type": ["Ground", "Mechanical"],
+          "armorType": "Light"
+        },
+        "meta": {
+          "targetPriority": 20,
+          "killScore": 100,
+          "productionScore": 50
+        }
+      },
+      {
+        "name": "Zealot",
+        "role": "Powerful melee warrior",
+        "armament": {
+          "name": "Psi Blades",
+          "damage": 8,
+          "attacks": 2,
+          "targets": ["Ground"],
+          "cooldown": 0.86,
+          "range": 0.1,
+          "upgrade": 1
+        },
+        "properties": {
+          "transportCapacity": 2,
+          "sight": 9
+        },
+        "production": {
+          "minerals": 100,
+          "army": 2,
+          "buildTime": 27,
+          "producedFrom": ["Gateway", "Warp Gate"]
+        },
+        "movement": {
+          "speed": 3.15,
+          "acceleration": 1000,
+          "lateralAcceleration": 46.0625,
+          "deceleration": 0,
+          "collisionRadius": 0.5
+        },
+        "protection": {
+          "shields": 50,
+          "shieldRegenSec": 2,
+          "hitPoints": 100,
+          "armor": 1,
+          "type": ["Biological", "Ground"],
+          "armorType": "Light"
+        },
+        "meta": {
+          "targetPriority": 20,
+          "killScore": 200,
+          "productionScore": 100
+        }
+      }
+    ]
   }
 }

@@ -2,6 +2,7 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Race {
+    name: String!
     Structures: [Structure]!
     Heroes: [Hero]!
     Units: [Unit]!
@@ -9,18 +10,21 @@ const typeDefs = gql`
 
   type Structure {
     name: String!
-    role: String!
+    role: String
     production: StructureProduction!
     protection: StructureProtection!
-    function: StructureFunction
+    function: StructureFunction!
   }
 
   type StructureProduction {
     minerals: Int!
-    army: Int!
+    gas: Int
+    army: Int
     buildTime: Int!
-    upgradesFrom: String
-    producedFrom: [Unit]
+    upgradesFrom: [String]
+    producedFrom: [String]
+    evolvesFrom: [String]
+    requires: [String]
   }
 
   type StructureProtection {
@@ -32,7 +36,9 @@ const typeDefs = gql`
   }
 
   type StructureFunction {
-    upgradesTo: String
+    addOns: [String]
+    upgradesTo: [String]
+    evolvesTo: [String]
     produces: [Unit]
     allows: [Structure]
     abilities: [String]
@@ -75,8 +81,8 @@ const typeDefs = gql`
     army: Int!
     buildTime: Int
     producedFrom: [String]
-    evolvesFrom: String
-    requires: String
+    evolvesFrom: [String]
+    requires: [String]
   }
 
   type UnitMovement {
@@ -92,7 +98,7 @@ const typeDefs = gql`
     shields: Int
     shieldRegenSec: Int
     hitPoints: Int!
-    hitPointRegenSec: Float!
+    hitPointRegenSec: Float
     armor: Int!
     type: [String]!
     armorType: String
@@ -105,7 +111,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    Test: [Unit]
+    Terran: Race
+    Protoss: Race
+    Zerg: Race
   }
 `;
 
