@@ -39,8 +39,8 @@ const typeDefs = gql`
     addOns: [String]
     upgradesTo: [String]
     evolvesTo: [String]
-    produces: [Unit]
-    allows: [Structure]
+    produces: [String]
+    allows: [String]
     abilities: [String]
     research: [String]
   }

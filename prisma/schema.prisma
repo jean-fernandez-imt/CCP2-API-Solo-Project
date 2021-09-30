@@ -11,6 +11,155 @@ generator client {
 }
 
 model Race {
-  id      Int       @id @default(autoincrement())
-  name    String    @db.VarChar(255)
+  id            Int                     @id @default(autoincrement())
+  name          String                  @db.VarChar(255)
+  structures    Structure[]
+  heroes        Hero[]
+  units         Unit[]
+}
+
+model Structure {
+  id            Int                     @id @default(autoincrement())
+  name          String                  @db.VarChar(255)
+  role          String?                 @db.VarChar(255)
+  production    StructureProduction?
+  protection    StructureProtection?
+  function      StructureFunction?
+  race          Race                    @relation(fields: [raceId], references: [id])
+  raceId        Int                     @unique
+}
+
+model StructureProduction {
+  id            Int                     @id @default(autoincrement())
+  minerals      Int
+  gas           Int?
+  army          Int?
+  buildTime     Int
+  upgradesFrom  String[]
+  producedFrom  String[]
+  evolvesFrom   String[]
+  requires      String[]
+  structure     Structure               @relation(fields: [structureId], references: [id])
+  structureId   Int                     @unique
+}
+
+model StructureProtection {
+  id            Int                     @id @default(autoincrement())
+  shields       Int?
+  hitPoints     Int
+  armor         Int
+  type          String[]
+  armorType     String
+  structure     Structure               @relation(fields: [structureId], references: [id])
+  structureId   Int                     @unique
+}
+
+model StructureFunction {
+  id            Int                     @id @default(autoincrement())
+  addOns        String[]
+  upgradesTo    String[]
+  evolvesTo     String[]
+  produces      String[]
+  allows        String[]
+  abilities     String[]
+  research      String[]
+  structure     Structure               @relation(fields: [structureId], references: [id])
+  structureId   Int                     @unique
+}
+
+model Hero {
+  id            Int                     @id @default(autoincrement())
+  name          String                  @db.VarChar(255)
+  race          Race                    @relation(fields: [raceId], references: [id])
+  raceId        Int                     @unique
+}
+
+model Unit {
+  id            Int                     @id @default(autoincrement())
+  name          String                  @db.VarChar(255)
+  role          String?                 @db.VarChar(255)
+  armament      UnitArmament?
+  properties    UnitProperties?
+  production    UnitProduction?
+  movement      UnitMovement?
+  protection    UnitProtection?
+  function      UnitFunction?
+  meta          UnitMeta?
+  race          Race                    @relation(fields: [raceId], references: [id])
+  raceId        Int                     @unique
+}
+
+model UnitArmament {
+  id            Int                     @id @default(autoincrement())
+  name          String                  @db.VarChar(255)
+  damage        Int
+  attacks       Int?
+  targets       String[]
+  cooldown      Float
+  range         Float
+  upgrade       Int
+  unit          Unit                    @relation(fields: [unitId], references: [id])
+  unitId        Int                     @unique
+}
+
+model UnitProperties {
+  id                    Int             @id @default(autoincrement())
+  transportCapacity     Int
+  sight                 Int
+  unit                  Unit            @relation(fields: [unitId], references: [id])
+  unitId                Int             @unique
+}
+
+model UnitProduction {
+  id            Int                     @id @default(autoincrement())
+  minerals      Int
+  gas           Int?
+  army          Int
+  buildTime     Int
+  producedFrom  String[]
+  evolvesFrom   String[]
+  requires      String[]
+  unit          Unit                    @relation(fields: [unitId], references: [id])
+  unitId        Int                     @unique
+}
+
+model UnitMovement {
+  id                      Int           @id @default(autoincrement())
+  speed                   Float
+  acceleration            Int
+  lateralAcceleration     Float
+  deceleration            Int
+  collisionRadius         Float
+  creepMultiplier         Float?
+  unit                    Unit          @relation(fields: [unitId], references: [id])
+  unitId                  Int           @unique
+}
+
+model UnitProtection {
+  id                      Int           @id @default(autoincrement())
+  shields                 Int?
+  shieldRegenSec          Int?
+  hitPoints               Int
+  hitPointRegenSec        Float?
+  armor                   Int
+  type                    String[]
+  armorType               String
+  unit                    Unit          @relation(fields: [unitId], references: [id])
+  unitId                  Int           @unique
+}
+
+model UnitFunction {
+  id            Int                     @id @default(autoincrement())
+  evolvesTo     String[]
+  unit          Unit                    @relation(fields: [unitId], references: [id])
+  unitId        Int                     @unique
+}
+
+model UnitMeta {
+  id                      Int           @id @default(autoincrement())
+  targetPriority          Int
+  killScore               Int
+  productionScore         Int
+  unit                    Unit          @relation(fields: [unitId], references: [id])
+  unitId                  Int           @unique
 }

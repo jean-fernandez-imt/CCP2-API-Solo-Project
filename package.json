@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "migrate": "npx prisma migrate dev --name init",
+    "migrate": "npx prisma migrate dev",
     "dev": "nodemon -r dotenv/config server/index.js",
     "start": "node -r dotenv/config server/index.js",
     "lint": "eslint --fix --ext .js ."
