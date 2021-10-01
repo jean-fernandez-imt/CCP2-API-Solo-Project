@@ -58,7 +58,7 @@ const typeDefs = gql`
     movement: UnitMovement
     protection: UnitProtection
     function: UnitFunction
-    meta: UnitMeta!
+    meta: UnitMeta
   }
 
   type UnitArmament {
@@ -127,6 +127,13 @@ const typeDefs = gql`
 
     # Zerg Queries
     Zerg: Race
+  }
+
+  type Mutations {
+    # Terran Mutations
+    AddTerranUnit(name: String!, role: String): Unit
+    UpdateTerranUnit(name: String!, role: String): Unit
+    DeleteTerranUnit(name: String!): Unit
   }
 `;
 
