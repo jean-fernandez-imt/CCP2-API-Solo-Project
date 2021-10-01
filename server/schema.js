@@ -118,6 +118,9 @@ const typeDefs = gql`
   type Query {
     # Terran Queries
     Terran: Race
+    TerranStructures: [Structure]
+    TerranHeroes: [Hero]
+    TerranUnits: [Unit]
 
     # Protoss Queries
     Protoss: Race
