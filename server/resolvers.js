@@ -141,6 +141,55 @@ const resolvers = {
       return Promise.resolve(getZerg);
     },
   },
+
+  Mutation: {
+    AddTerranUnit: async (parent, args) => {
+      const { name, role } = args;
+      const newUnit = { name, role };
+
+      const createUnit = await prisma.unit.create({
+        data: {
+          name: newUnit.name,
+          role: newUnit.role,
+          race: {
+            connect: {
+              name: "Terran",
+            },
+          },
+        },
+      });
+
+      return Promise.resolve(createUnit);
+    },
+
+    UpdateTerranUnit: async (parent, args) => {
+      const { name, role } = args;
+      const updatedUnit = { name, role };
+
+      const updateUnit = await prisma.unit.update({
+        where: {
+          name: updatedUnit.name,
+        },
+        data: {
+          role: updatedUnit.role,
+        },
+      });
+
+      return Promise.resolve(updateUnit);
+    },
+
+    DeleteTerranUnit: async (parent, args) => {
+      const { name } = args;
+
+      const deleteUnit = await prisma.unit.delete({
+        where: {
+          name: name,
+        },
+      });
+
+      return Promise.resolve(deleteUnit);
+    },
+  },
 };
 
 module.exports = resolvers;

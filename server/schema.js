@@ -129,7 +129,7 @@ const typeDefs = gql`
     Zerg: Race
   }
 
-  type Mutations {
+  type Mutation {
     # Terran Mutations
     AddTerranUnit(name: String!, role: String): Unit
     UpdateTerranUnit(name: String!, role: String): Unit
