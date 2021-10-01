@@ -6,6 +6,8 @@
   "scripts": {
     "prepare": "husky install",
     "migrate": "npx prisma migrate dev",
+    "seed": "npx prisma db seed",
+    "reset": "npx prisma migrate reset --skip-seed",
     "dev": "nodemon -r dotenv/config server/index.js",
     "start": "node -r dotenv/config server/index.js",
     "lint": "eslint --fix --ext .js ."
@@ -25,6 +27,9 @@
     "apollo-server": "^3.3.0",
     "dotenv": "^10.0.0",
     "graphql": "^15.6.0"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "devDependencies": {
     "@types/node": "^16.10.2",

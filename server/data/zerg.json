@@ -54,7 +54,7 @@
     "heroes": [{ "name": "Sarah Kerrigan" }],
     "units": [
       {
-        "name": "Dronw",
+        "name": "Drone",
         "role": "Basic worker unit",
         "armament": {
           "name": "Claws",

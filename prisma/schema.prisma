@@ -12,7 +12,7 @@ generator client {
 
 model Race {
   id            Int                     @id @default(autoincrement())
-  name          String                  @db.VarChar(255)
+  name          String                  @db.VarChar(255) @unique
   structures    Structure[]
   heroes        Hero[]
   units         Unit[]
@@ -20,13 +20,13 @@ model Race {
 
 model Structure {
   id            Int                     @id @default(autoincrement())
-  name          String                  @db.VarChar(255)
+  name          String                  @db.VarChar(255) @unique
   role          String?                 @db.VarChar(255)
   production    StructureProduction?
   protection    StructureProtection?
   function      StructureFunction?
-  race          Race                    @relation(fields: [raceId], references: [id])
-  raceId        Int                     @unique
+  race          Race                    @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  raceId        Int                     
 }
 
 model StructureProduction {
@@ -39,7 +39,7 @@ model StructureProduction {
   producedFrom  String[]
   evolvesFrom   String[]
   requires      String[]
-  structure     Structure               @relation(fields: [structureId], references: [id])
+  structure     Structure               @relation(fields: [structureId], references: [id], onDelete: Cascade)
   structureId   Int                     @unique
 }
 
@@ -50,7 +50,7 @@ model StructureProtection {
   armor         Int
   type          String[]
   armorType     String
-  structure     Structure               @relation(fields: [structureId], references: [id])
+  structure     Structure               @relation(fields: [structureId], references: [id], onDelete: Cascade)
   structureId   Int                     @unique
 }
 
@@ -63,20 +63,20 @@ model StructureFunction {
   allows        String[]
   abilities     String[]
   research      String[]
-  structure     Structure               @relation(fields: [structureId], references: [id])
+  structure     Structure               @relation(fields: [structureId], references: [id], onDelete: Cascade)
   structureId   Int                     @unique
 }
 
 model Hero {
   id            Int                     @id @default(autoincrement())
-  name          String                  @db.VarChar(255)
-  race          Race                    @relation(fields: [raceId], references: [id])
-  raceId        Int                     @unique
+  name          String                  @db.VarChar(255) @unique
+  race          Race                    @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  raceId        Int                     
 }
 
 model Unit {
   id            Int                     @id @default(autoincrement())
-  name          String                  @db.VarChar(255)
+  name          String                  @db.VarChar(255) @unique
   role          String?                 @db.VarChar(255)
   armament      UnitArmament?
   properties    UnitProperties?
@@ -85,8 +85,8 @@ model Unit {
   protection    UnitProtection?
   function      UnitFunction?
   meta          UnitMeta?
-  race          Race                    @relation(fields: [raceId], references: [id])
-  raceId        Int                     @unique
+  race          Race                    @relation(fields: [raceId], references: [id], onDelete: Cascade)
+  raceId        Int                     
 }
 
 model UnitArmament {
@@ -97,8 +97,8 @@ model UnitArmament {
   targets       String[]
   cooldown      Float
   range         Float
-  upgrade       Int
-  unit          Unit                    @relation(fields: [unitId], references: [id])
+  upgrade       Int?
+  unit          Unit                    @relation(fields: [unitId], references: [id], onDelete: Cascade)
   unitId        Int                     @unique
 }
 
@@ -106,7 +106,7 @@ model UnitProperties {
   id                    Int             @id @default(autoincrement())
   transportCapacity     Int
   sight                 Int
-  unit                  Unit            @relation(fields: [unitId], references: [id])
+  unit                  Unit            @relation(fields: [unitId], references: [id], onDelete: Cascade)
   unitId                Int             @unique
 }
 
@@ -119,19 +119,19 @@ model UnitProduction {
   producedFrom  String[]
   evolvesFrom   String[]
   requires      String[]
-  unit          Unit                    @relation(fields: [unitId], references: [id])
+  unit          Unit                    @relation(fields: [unitId], references: [id], onDelete: Cascade)
   unitId        Int                     @unique
 }
 
 model UnitMovement {
   id                      Int           @id @default(autoincrement())
   speed                   Float
-  acceleration            Int
+  acceleration            Float
   lateralAcceleration     Float
-  deceleration            Int
+  deceleration            Float
   collisionRadius         Float
   creepMultiplier         Float?
-  unit                    Unit          @relation(fields: [unitId], references: [id])
+  unit                    Unit          @relation(fields: [unitId], references: [id], onDelete: Cascade)
   unitId                  Int           @unique
 }
 
@@ -144,14 +144,14 @@ model UnitProtection {
   armor                   Int
   type                    String[]
   armorType               String
-  unit                    Unit          @relation(fields: [unitId], references: [id])
+  unit                    Unit          @relation(fields: [unitId], references: [id], onDelete: Cascade)
   unitId                  Int           @unique
 }
 
 model UnitFunction {
   id            Int                     @id @default(autoincrement())
   evolvesTo     String[]
-  unit          Unit                    @relation(fields: [unitId], references: [id])
+  unit          Unit                    @relation(fields: [unitId], references: [id], onDelete: Cascade)
   unitId        Int                     @unique
 }
 
@@ -160,6 +160,6 @@ model UnitMeta {
   targetPriority          Int
   killScore               Int
   productionScore         Int
-  unit                    Unit          @relation(fields: [unitId], references: [id])
+  unit                    Unit          @relation(fields: [unitId], references: [id], onDelete: Cascade)
   unitId                  Int           @unique
 }

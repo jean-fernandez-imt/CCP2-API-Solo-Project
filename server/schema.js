@@ -88,9 +88,9 @@ const typeDefs = gql`
 
   type UnitMovement {
     speed: Float
-    acceleration: Int
+    acceleration: Float
     lateralAcceleration: Float
-    deceleration: Int
+    deceleration: Float
     collisionRadius: Float
     creepMultiplier: Float
   }
