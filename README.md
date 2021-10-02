@@ -20,8 +20,6 @@ We also have some hard-coded data and scripts prepared for getting you started:
 - Run `npm run seed` for inserting the data from `./server/data` into your database.
 - Run `npm run reset` for clearing all data and getting a fresh new database.
 
-You can check the behavior of your API in the `Apollo Studio Sandbox` after starting the server (follow the link in the terminal).
-
 ## 👨‍💻 Developer Tools
 
 This project has some additional scripts for helping you during development:
@@ -29,6 +27,8 @@ This project has some additional scripts for helping you during development:
 - Run `npm run dev` for starting your server in development mode using `Nodemon`.
 - Run `npm run start` for starting your server in production mode.
 - Run `npm run lint` for applying `Prettier` format to your code.
+
+You can check the behavior of your API in the `Apollo Studio Sandbox` after starting the server (follow the link in the terminal).
 
 # 📚 References
 
