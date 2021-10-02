@@ -20,6 +20,10 @@ We also have some hard-coded data and scripts prepared for getting you started:
 - Run `npm run seed` for inserting the data from `./server/data` into your database.
 - Run `npm run reset` for clearing all data and getting a fresh new database.
 
+After seeding, your database might look something like this:
+
+![PostgreSQL Database Screenshot](./img/database_screenshot.png)
+
 ## 👨‍💻 Developer Tools
 
 This project has some additional scripts for helping you during development:
