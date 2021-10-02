@@ -12,7 +12,7 @@ This was created during my time as a student at Code Chrysalis. It is an early i
 
 ## 💾 Database Setup
 
-We implemented our Database using `PostgreSQL`. Setting it up is beyond the scope of this project, so please refer the [Installation Guide](https://www.postgresql.org/download/) for your OS. Once you got it running, you can connect it to the project by following th steps in [this guide](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgres).
+We implemented our Database using `PostgreSQL`. Setting it up is beyond the scope of this project, so please refer to the [Installation Guide](https://www.postgresql.org/download/) for your OS. Once you got it running, you can connect it to the project by following the steps in [this guide](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgres).
 
 We also have some hard-coded data and scripts prepared for getting you started:
 
