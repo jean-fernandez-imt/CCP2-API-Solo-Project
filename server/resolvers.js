@@ -110,6 +110,50 @@ const resolvers = {
       return Promise.resolve(getProtoss);
     },
 
+    ProtossStructures: async () => {
+      const getProtossStructures = await prisma.structure.findMany({
+        where: {
+          raceId: 2,
+        },
+        include: {
+          production: true,
+          protection: true,
+          function: true,
+        },
+      });
+
+      return Promise.resolve(getProtossStructures);
+    },
+
+    ProtossHeroes: async () => {
+      const getProtossHeroes = await prisma.hero.findMany({
+        where: {
+          raceId: 2,
+        },
+      });
+
+      return Promise.resolve(getProtossHeroes);
+    },
+
+    ProtossUnits: async () => {
+      const getProtossUnits = await prisma.unit.findMany({
+        where: {
+          raceId: 2,
+        },
+        include: {
+          armament: true,
+          properties: true,
+          production: true,
+          movement: true,
+          protection: true,
+          function: true,
+          meta: true,
+        },
+      });
+
+      return Promise.resolve(getProtossUnits);
+    },
+
     Zerg: async () => {
       const getZerg = await prisma.race.findUnique({
         where: {
@@ -139,6 +183,50 @@ const resolvers = {
       });
 
       return Promise.resolve(getZerg);
+    },
+
+    ZergStructures: async () => {
+      const getZergStructures = await prisma.structure.findMany({
+        where: {
+          raceId: 3,
+        },
+        include: {
+          production: true,
+          protection: true,
+          function: true,
+        },
+      });
+
+      return Promise.resolve(getZergStructures);
+    },
+
+    ZergHeroes: async () => {
+      const getZergHeroes = await prisma.hero.findMany({
+        where: {
+          raceId: 3,
+        },
+      });
+
+      return Promise.resolve(getZergHeroes);
+    },
+
+    ZergUnits: async () => {
+      const getZergUnits = await prisma.unit.findMany({
+        where: {
+          raceId: 3,
+        },
+        include: {
+          armament: true,
+          properties: true,
+          production: true,
+          movement: true,
+          protection: true,
+          function: true,
+          meta: true,
+        },
+      });
+
+      return Promise.resolve(getZergUnits);
     },
   },
 
