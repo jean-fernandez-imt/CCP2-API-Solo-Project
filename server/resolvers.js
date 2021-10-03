@@ -232,13 +232,33 @@ const resolvers = {
 
   Mutation: {
     AddTerranUnit: async (parent, args) => {
-      const { name, role } = args;
-      const newUnit = { name, role };
+      const { unit } = args;
 
-      const createUnit = await prisma.unit.create({
+      await prisma.unit.create({
         data: {
-          name: newUnit.name,
-          role: newUnit.role,
+          name: unit.name,
+          role: unit.role,
+          armament: {
+            create: unit.armament,
+          },
+          properties: {
+            create: unit.properties,
+          },
+          production: {
+            create: unit.production,
+          },
+          movement: {
+            create: unit.movement,
+          },
+          protection: {
+            create: unit.protection,
+          },
+          function: {
+            create: unit.function,
+          },
+          meta: {
+            create: unit.meta,
+          },
           race: {
             connect: {
               name: "Terran",
@@ -247,23 +267,95 @@ const resolvers = {
         },
       });
 
-      return Promise.resolve(createUnit);
-    },
-
-    UpdateTerranUnit: async (parent, args) => {
-      const { name, role } = args;
-      const updatedUnit = { name, role };
-
-      const updateUnit = await prisma.unit.update({
+      const getCreatedUnit = await prisma.unit.findUnique({
         where: {
-          name: updatedUnit.name,
+          name: unit.name,
         },
-        data: {
-          role: updatedUnit.role,
+        include: {
+          armament: true,
+          properties: true,
+          production: true,
+          movement: true,
+          protection: true,
+          function: true,
+          meta: true,
         },
       });
 
-      return Promise.resolve(updateUnit);
+      return Promise.resolve(getCreatedUnit);
+    },
+
+    UpdateTerranUnit: async (parent, args) => {
+      const { name, updatedUnit } = args;
+
+      await prisma.unit.update({
+        where: {
+          name: name,
+        },
+        data: {
+          name: updatedUnit.name,
+          role: updatedUnit.role,
+          armament: {
+            upsert: {
+              update: updatedUnit.armament,
+              create: updatedUnit.armament,
+            },
+          },
+          properties: {
+            upsert: {
+              update: updatedUnit.properties,
+              create: updatedUnit.properties,
+            },
+          },
+          production: {
+            upsert: {
+              update: updatedUnit.production,
+              create: updatedUnit.production,
+            },
+          },
+          movement: {
+            upsert: {
+              update: updatedUnit.movement,
+              create: updatedUnit.movement,
+            },
+          },
+          protection: {
+            upsert: {
+              update: updatedUnit.protection,
+              create: updatedUnit.protection,
+            },
+          },
+          function: {
+            upsert: {
+              update: updatedUnit.function,
+              create: updatedUnit.function,
+            },
+          },
+          meta: {
+            upsert: {
+              update: updatedUnit.meta,
+              create: updatedUnit.meta,
+            },
+          },
+        },
+      });
+
+      const getUpdatedUnit = await prisma.unit.findUnique({
+        where: {
+          name: name,
+        },
+        include: {
+          armament: true,
+          properties: true,
+          production: true,
+          movement: true,
+          protection: true,
+          function: true,
+          meta: true,
+        },
+      });
+
+      return Promise.resolve(getUpdatedUnit);
     },
 
     DeleteTerranUnit: async (parent, args) => {
