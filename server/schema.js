@@ -243,53 +243,18 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    # Terran Mutations
-    AddTerranStructure(structure: StructureInput): Structure
-    UpdateTerranStructure(
-      name: String!
-      updatedStructure: StructureInput
-    ): Structure
-    DeleteTerranStructure(name: String!): Structure
+    # General Mutations
+    AddStructure(race: String!, structure: StructureInput): Structure
+    UpdateStructure(name: String!, updatedStructure: StructureInput): Structure
+    DeleteStructure(name: String!): Structure
 
-    AddTerranHero(hero: HeroInput): Hero
-    UpdateTerranHero(name: String!, updatedHero: HeroInput): Hero
-    DeleteTerranHero(name: String!): Hero
+    AddHero(race: String!, hero: HeroInput): Hero
+    UpdateHero(name: String!, updatedHero: HeroInput): Hero
+    DeleteHero(name: String!): Hero
 
-    AddTerranUnit(unit: UnitInput): Unit
-    UpdateTerranUnit(name: String!, updatedUnit: UnitInput): Unit
-    DeleteTerranUnit(name: String!): Unit
-
-    # Protoss Mutations
-    AddProtossStructure(structure: StructureInput): Structure
-    UpdateProtossStructure(
-      name: String!
-      updatedStructure: StructureInput
-    ): Structure
-    DeleteProtossStructure(name: String!): Structure
-
-    AddProtossHero(hero: HeroInput): Hero
-    UpdateProtossHero(name: String!, updatedHero: HeroInput): Hero
-    DeleteProtossHero(name: String!): Hero
-
-    AddProtossUnit(unit: UnitInput): Unit
-    UpdateProtossUnit(name: String!, updatedUnit: UnitInput): Unit
-    DeleteProtossUnit(name: String!): Unit
-
-    # Zerg Mutations
-    AddZergStructure(structure: StructureInput): Structure
-    UpdateZergStructure(
-      name: String!
-      updatedStructure: StructureInput
-    ): Structure
-    DeleteZergStructure(name: String!): Structure
-
-    AddZergHero(hero: HeroInput): Hero
-    UpdateZergHero(name: String!, updatedHero: HeroInput): Hero
-    DeleteZergHero(name: String!): Hero
-
-    AddZergUnit(unit: UnitInput): Unit
-    UpdateZergUnit(name: String!, updatedUnit: UnitInput): Unit
-    DeleteZergUnit(name: String!): Unit
+    AddUnit(race: String!, unit: UnitInput): Unit
+    UpdateUnit(name: String!, updatedUnit: UnitInput): Unit
+    DeleteUnit(name: String!): Unit
   }
 `;
 
