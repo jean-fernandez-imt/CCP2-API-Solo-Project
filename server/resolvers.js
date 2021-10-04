@@ -1,233 +1,30 @@
+const { TerranQueries } = require("./queries/TerranQueries");
+const { ProtossQueries } = require("./queries/ProtossQueries");
+const { ZergQueries } = require("./queries/ZergQueries");
+
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
 const resolvers = {
   Query: {
-    Terran: async () => {
-      const getTerran = await prisma.race.findUnique({
-        where: {
-          name: "Terran",
-        },
-        include: {
-          structures: {
-            include: {
-              production: true,
-              protection: true,
-              function: true,
-            },
-          },
-          heroes: true,
-          units: {
-            include: {
-              armament: true,
-              properties: true,
-              production: true,
-              movement: true,
-              protection: true,
-              function: true,
-              meta: true,
-            },
-          },
-        },
-      });
+    // Terran Queries
+    Terran: TerranQueries.Terran,
+    TerranStructures: TerranQueries.TerranStructures,
+    TerranHeroes: TerranQueries.TerranHeroes,
+    TerranUnits: TerranQueries.TerranUnits,
 
-      return Promise.resolve(getTerran);
-    },
+    // Protoss Queries
+    Protoss: ProtossQueries.Protoss,
+    ProtossStructures: ProtossQueries.ProtossStructures,
+    ProtossHeroes: ProtossQueries.ProtossHeroes,
+    ProtossUnits: ProtossQueries.ProtossUnits,
 
-    TerranStructures: async () => {
-      const getTerranStructures = await prisma.structure.findMany({
-        where: {
-          raceId: 1,
-        },
-        include: {
-          production: true,
-          protection: true,
-          function: true,
-        },
-      });
-
-      return Promise.resolve(getTerranStructures);
-    },
-
-    TerranHeroes: async () => {
-      const getTerranHeroes = await prisma.hero.findMany({
-        where: {
-          raceId: 1,
-        },
-      });
-
-      return Promise.resolve(getTerranHeroes);
-    },
-
-    TerranUnits: async () => {
-      const getTerranUnits = await prisma.unit.findMany({
-        where: {
-          raceId: 1,
-        },
-        include: {
-          armament: true,
-          properties: true,
-          production: true,
-          movement: true,
-          protection: true,
-          function: true,
-          meta: true,
-        },
-      });
-
-      return Promise.resolve(getTerranUnits);
-    },
-
-    Protoss: async () => {
-      const getProtoss = await prisma.race.findUnique({
-        where: {
-          name: "Protoss",
-        },
-        include: {
-          structures: {
-            include: {
-              production: true,
-              protection: true,
-              function: true,
-            },
-          },
-          heroes: true,
-          units: {
-            include: {
-              armament: true,
-              properties: true,
-              production: true,
-              movement: true,
-              protection: true,
-              function: true,
-              meta: true,
-            },
-          },
-        },
-      });
-
-      return Promise.resolve(getProtoss);
-    },
-
-    ProtossStructures: async () => {
-      const getProtossStructures = await prisma.structure.findMany({
-        where: {
-          raceId: 2,
-        },
-        include: {
-          production: true,
-          protection: true,
-          function: true,
-        },
-      });
-
-      return Promise.resolve(getProtossStructures);
-    },
-
-    ProtossHeroes: async () => {
-      const getProtossHeroes = await prisma.hero.findMany({
-        where: {
-          raceId: 2,
-        },
-      });
-
-      return Promise.resolve(getProtossHeroes);
-    },
-
-    ProtossUnits: async () => {
-      const getProtossUnits = await prisma.unit.findMany({
-        where: {
-          raceId: 2,
-        },
-        include: {
-          armament: true,
-          properties: true,
-          production: true,
-          movement: true,
-          protection: true,
-          function: true,
-          meta: true,
-        },
-      });
-
-      return Promise.resolve(getProtossUnits);
-    },
-
-    Zerg: async () => {
-      const getZerg = await prisma.race.findUnique({
-        where: {
-          name: "Zerg",
-        },
-        include: {
-          structures: {
-            include: {
-              production: true,
-              protection: true,
-              function: true,
-            },
-          },
-          heroes: true,
-          units: {
-            include: {
-              armament: true,
-              properties: true,
-              production: true,
-              movement: true,
-              protection: true,
-              function: true,
-              meta: true,
-            },
-          },
-        },
-      });
-
-      return Promise.resolve(getZerg);
-    },
-
-    ZergStructures: async () => {
-      const getZergStructures = await prisma.structure.findMany({
-        where: {
-          raceId: 3,
-        },
-        include: {
-          production: true,
-          protection: true,
-          function: true,
-        },
-      });
-
-      return Promise.resolve(getZergStructures);
-    },
-
-    ZergHeroes: async () => {
-      const getZergHeroes = await prisma.hero.findMany({
-        where: {
-          raceId: 3,
-        },
-      });
-
-      return Promise.resolve(getZergHeroes);
-    },
-
-    ZergUnits: async () => {
-      const getZergUnits = await prisma.unit.findMany({
-        where: {
-          raceId: 3,
-        },
-        include: {
-          armament: true,
-          properties: true,
-          production: true,
-          movement: true,
-          protection: true,
-          function: true,
-          meta: true,
-        },
-      });
-
-      return Promise.resolve(getZergUnits);
-    },
+    // Zerg Queries
+    Zerg: ZergQueries.Zerg,
+    ZergStructures: ZergQueries.ZergStructures,
+    ZergHeroes: ZergQueries.ZergHeroes,
+    ZergUnits: ZergQueries.ZergUnits,
   },
 
   Mutation: {
