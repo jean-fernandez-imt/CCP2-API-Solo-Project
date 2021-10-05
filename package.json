@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API implementation with GraphQL",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "prepare": "husky install",
     "migrate": "npx prisma migrate dev",

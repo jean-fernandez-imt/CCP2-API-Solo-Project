@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+import { gql } from "apollo-server";
 
 const typeDefs = gql`
   type Race {
@@ -258,4 +258,4 @@ const typeDefs = gql`
   }
 `;
 
-module.exports = typeDefs;
+export { typeDefs };

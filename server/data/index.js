@@ -1,9 +1,5 @@
-const { terran } = require("./terran.json");
-const { protoss } = require("./protoss.json");
-const { zerg } = require("./zerg.json");
+import { terran } from "./terran.json";
+import { protoss } from "./protoss.json";
+import { zerg } from "./zerg.json";
 
-module.exports = {
-  terran,
-  protoss,
-  zerg,
-};
+export { terran, protoss, zerg };

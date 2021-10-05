@@ -1,4 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
+import PrismaPkg from "@prisma/client";
+const { PrismaClient } = PrismaPkg;
 
 const prisma = new PrismaClient();
 
@@ -297,4 +298,4 @@ const GeneralMutations = {
   },
 };
 
-module.exports = { GeneralMutations };
+export { GeneralMutations };

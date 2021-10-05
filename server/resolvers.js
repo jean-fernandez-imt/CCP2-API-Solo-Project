@@ -1,12 +1,8 @@
-const { TerranQueries } = require("./queries/TerranQueries");
-const { ProtossQueries } = require("./queries/ProtossQueries");
-const { ZergQueries } = require("./queries/ZergQueries");
+import { TerranQueries } from "./queries/TerranQueries.js";
+import { ProtossQueries } from "./queries/ProtossQueries.js";
+import { ZergQueries } from "./queries/ZergQueries.js";
 
-const { GeneralMutations } = require("./mutations/GeneralMutations");
-
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
+import { GeneralMutations } from "./mutations/GeneralMutations.js";
 
 const resolvers = {
   Query: {
@@ -45,4 +41,4 @@ const resolvers = {
   },
 };
 
-module.exports = resolvers;
+export { resolvers };
